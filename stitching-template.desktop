@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Stitch Canvas Generator
+Comment=Generate 3D stitch canvas STL from images with live preview
+Exec=stitching-template
+Icon=stitching-template
+Terminal=false
+Type=Application
+Categories=Graphics;CAD;3DGraphics;
+StartupNotify=true
