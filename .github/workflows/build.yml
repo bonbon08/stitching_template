@@ -9,8 +9,14 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: archlinux:latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Install build deps
+        run: |
+          pacman -Sy --noconfirm base-devel git
 
       - name: Build package
         run: |

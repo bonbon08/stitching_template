@@ -25,12 +25,12 @@ Generate 3D stitch canvas STL files from images with live 3D preview.
 ./stitching.sh
 
 # Or directly with system Python
-python3 main.py
+python3 src/main.py
 ```
 
 ## Installation
 
-### Arch Linux (AUR)
+### Arch Linux
 
 ```bash
 git clone https://github.com/bonbon08/stitching_template.git
@@ -43,7 +43,7 @@ This installs:
 - Launcher script in `/usr/bin/stitching-template`
 - Desktop entry and icon
 
-## Manual
+### Manual
 
 ```bash
 python3 -m venv .venv
@@ -55,7 +55,6 @@ python3 -m venv .venv
 
 - Python 3.10+
 - numpy, Pillow, trimesh, shapely, manifold3d, matplotlib
-- Or: `mapbox-earcut` instead of `manifold3d`
 
 ## License
 
