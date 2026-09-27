@@ -20,7 +20,7 @@ jobs:
 
       - name: Build binary
         run: |
-          pip install pyinstaller
+          pip install --break-system-packages pyinstaller
           pyinstaller --onefile --name stitching-template \
             --add-data "assets/kirby.png:assets" \
             src/main.py
@@ -41,12 +41,13 @@ jobs:
 
       - name: Install build deps
         run: |
-          pacman -Sy --noconfirm base-devel git
+          pacman -Sy --noconfirm base-devel git fakeroot
 
-      - name: Create builder user
+      - name: Setup builder
         run: |
           useradd -m builder
-          chown -R builder:builder /__w/stitching_template/stitching_template
+          cp -a . /home/builder/src
+          chown -R builder:builder /home/builder/src
 
       - name: Download binary
         uses: actions/download-artifact@v4
@@ -58,17 +59,17 @@ jobs:
         run: |
           cp dist/stitching-template stitching-template-bin
           cp assets/kirby.png kirby.png-asset
-          chown builder:builder stitching-template-bin kirby.png-asset
+          chown -R builder:builder /home/builder/src
 
       - name: Build package
         run: |
-          su builder -c "makepkg -sf --noconfirm"
+          su builder -c "cd /home/builder/src && makepkg -sf --noconfirm"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: stitching-template-pkg
-          path: stitching-template-*.pkg.tar.zst
+          path: /home/builder/src/stitching-template-*.pkg.tar.zst
 
   release:
     needs: build-package
