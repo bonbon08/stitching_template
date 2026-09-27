@@ -5,6 +5,8 @@ src/__pycache__/
 venv/
 pkg/
 files/
+stitching-template-binary
+stitching-template.spec
 
 *.stl
 *.egg-info/

@@ -30,7 +30,7 @@ python3 src/main.py
 
 ## Installation
 
-### Arch Linux
+### Arch Linux (Binary)
 
 ```bash
 git clone https://github.com/bonbon08/stitching_template.git
@@ -38,10 +38,18 @@ cd stitching-template
 makepkg -si
 ```
 
-This installs:
-- App to `/opt/stitching-template/`
-- Launcher script in `/usr/bin/stitching-template`
+This installs a standalone binary (no Python needed):
+- Binary to `/opt/stitching-template/`
+- Launcher in `/usr/bin/stitching-template`
 - Desktop entry and icon
+
+### Arch Linux (Source)
+
+```bash
+git clone https://github.com/bonbon08/stitching_template.git
+cd stitching-template
+makepkg -si
+```
 
 ### Manual
 
@@ -53,7 +61,7 @@ python3 -m venv .venv
 
 ## Dependencies
 
-- Python 3.10+
+- Python 3.10+ (for manual install)
 - numpy, Pillow, trimesh, shapely, manifold3d, matplotlib
 
 ## License
